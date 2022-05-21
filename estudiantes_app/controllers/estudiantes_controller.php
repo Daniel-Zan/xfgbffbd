@@ -21,6 +21,7 @@ class EstudianteController implements IController
                 $estudiante->set ('nombres',$row['nombres']);
                 $estudiante->set ('apellidos',$row['apellidos']);
                 $estudiante->set ('edad',$row['edad']);
+                $estudiante->set ('materia',$row['materia']);
                 
                 array_push($estudiantes, $estudiante);
             }
@@ -42,6 +43,7 @@ public function detail($id)
             $estudiante->set('nombres', $row['nombres']);
             $estudiante->set('apellidos', $row['apellidos']);
             $estudiante->set('edad', $row['edad']);
+            $estudiante->set('materia', $row['materia']);
         }
     }
     $conexionDB ->close();
@@ -49,11 +51,12 @@ public function detail($id)
 }
 public function create($estudianteModel)
 {
-    $sql = "insert into estudiantes (codigo, nombres, apellidos, edad)";
+    $sql = "insert into estudiantes (codigo, nombres, apellidos, edad, materia)";
     $sql = "values ('" . $estudianteModel ->get('codigo') . "',
     '" . $estudianteModel->get('nombres'). "',
     '" . $estudianteModel->get('apellidos'). "',
-     " . $estudianteModel->get('edad') . " )";
+    '" . $estudianteModel->get('edad'). "',
+     " . $estudianteModel->get('materia') . " )";
      $conexionDB = new ConexionDB();
      $resultQuery = $conexionDB->getResultQuery($sql);
      $conexionDB->close();
@@ -65,7 +68,8 @@ public function update($id, $estudianteModel)
     $sql .= " codigo='" . $estudianteModel->get('codigo') . "'.";
     $sql .= " nombres='" . $estudianteModel->get('nombres') . "'.";
     $sql .= " apellidos='" . $estudianteModel->get('apellidos') . "'.";
-    $sql .= " edad='" . $estudianteModel->get('edad');
+    $sql .= " edad='" . $estudianteModel->get('edad') . "'.";
+    $sql .= " materia='" . $estudianteModel->get('materia');
     $sql .= " where id=" . $id;
     $conexionDB = new ConexionDB();
     $resultQuery = $conexionDB->getResultQuery($sql);
