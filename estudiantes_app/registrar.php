@@ -16,6 +16,7 @@ $estudiante->set('codigo',$_POST['codigoInput']);
 $estudiante->set('nombres',$_POST['nombresInput']);
 $estudiante->set('apellidos',$_POST['apellidosInput']);
 $estudiante->set('edad',$_POST['edadInput']);
+$estudiante->set('materia',$_POST['materiaInput']);
 
 $resultado = $estudianteController -> create($estudiante);
 
